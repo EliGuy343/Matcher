@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj": {}
+    "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API.csproj": {}
   },
   "projects": {
-    "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj": {
+    "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj",
+        "projectUniqueName": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API.csproj",
         "projectName": "API",
-        "projectPath": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj",
+        "projectPath": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API.csproj",
         "packagesPath": "C:\\Users\\fkg\\.nuget\\packages\\",
-        "outputPath": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\obj\\",
+        "outputPath": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fkg\\AppData\\Roaming\\NuGet\\NuGet.Config"
