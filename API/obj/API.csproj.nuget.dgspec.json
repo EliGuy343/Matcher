@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API\\API.csproj": {}
+    "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj": {}
   },
   "projects": {
-    "e:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API\\API.csproj": {
+    "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API\\API.csproj",
+        "projectUniqueName": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "e:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API\\API.csproj",
+        "projectPath": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj",
         "packagesPath": "C:\\Users\\fkg\\.nuget\\packages\\",
-        "outputPath": "e:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API\\obj\\",
+        "outputPath": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fkg\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,6 +38,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
