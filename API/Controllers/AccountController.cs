@@ -26,12 +26,6 @@ namespace API.Controllers
         {
             if(await UserExists(registerDto.UserName))
                 return BadRequest("Username is already taken"); 
-            if(registerDto.Password.Length < 8)
-                return BadRequest("Password should be at least 8 characters long");
-            if(!registerDto.Password.All(char.IsDigit))
-                return BadRequest("Password should have at least one number");
-            if(!registerDto.Password.All(char.IsLetter))
-                return BadRequest("Password should have at least one letter");
             
             using var hmac = new HMACSHA512();
             var user = new AppUser
