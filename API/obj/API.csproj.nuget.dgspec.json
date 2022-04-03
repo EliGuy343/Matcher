@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj": {}
+    "e:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API\\API.csproj": {}
   },
   "projects": {
-    "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj": {
+    "e:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj",
+        "projectUniqueName": "e:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj",
+        "projectPath": "e:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API\\API.csproj",
         "packagesPath": "C:\\Users\\fkg\\.nuget\\packages\\",
-        "outputPath": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\obj\\",
+        "outputPath": "e:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fkg\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -51,6 +51,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.16.0, )"
             }
           },
           "imports": [
