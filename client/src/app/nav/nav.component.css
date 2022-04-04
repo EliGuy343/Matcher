@@ -1,0 +1,17 @@
+.dropdown-toggle, .dropdown-item {
+    cursor: pointer;
+}
+
+.navbar {
+    background-color: rgb(117, 112, 112);
+}
+.btn-outline-success {
+    color: #fff;
+    border-color: rgb(143, 139, 139);
+    background: linear-gradient(45deg,#fd267a,#ff6036);
+  }
+.btn-outline-success:hover {
+    color: #fff;
+    border-color: #fff;
+    background: linear-gradient(45deg,#ff6036,#fd267a);
+}   
