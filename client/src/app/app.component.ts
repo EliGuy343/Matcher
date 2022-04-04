@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { User } from './models/user';
+import { AccountService } from './services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +12,17 @@ export class AppComponent implements OnInit {
   title = 'Matcher';
   users: any; 
   url = 'https://localhost:7260';
-  constructor(private http:HttpClient) {}
+
+  constructor(private http:HttpClient, private accountService:AccountService) {}
   ngOnInit() {
-    this.getUsers(); 
+    this.getUsers();
+    this.setCurrentUser();
+  }
+
+  setCurrentUser() {
+    const userItem = localStorage.getItem('user');
+    const user: User = userItem ? JSON.parse(userItem) : null;
+    this.accountService.setCurrentUser(user);
   }
 
   getUsers() {
