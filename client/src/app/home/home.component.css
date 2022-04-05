@@ -1,0 +1,22 @@
+.btn {
+    margin: 5px;
+}
+
+.btn-success {
+    border-color:rgb(58, 61, 230);
+    background-color: rgb(58, 61, 230)
+}
+
+.btn-success:hover {
+    border-color:rgb(87, 83, 212);
+    background-color: rgb(87, 83, 212);
+}
+.btn-info {
+    border-color:rgb(238, 238, 43);
+    background-color: rgb(238, 238, 43);
+}
+
+.btn-info:hover {
+    border-color:rgb(255, 255, 105);
+    background-color: rgb(255, 255, 105);
+}
