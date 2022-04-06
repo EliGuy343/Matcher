@@ -13,11 +13,10 @@ import { AccountService } from '../services/account.service';
 export class NavComponent implements OnInit {
   model:any = {};
 
-
   constructor(public accountService:AccountService,
     private router:Router, private toastr:ToastrService) {}
   
-  ngOnInit(): void {}
+  ngOnInit(): void { console.log((this.accountService.currentUser$)); }
 
   login() {
     this.accountService.login(this.model).subscribe({

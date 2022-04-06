@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
           if(user) {
             return true;
           } 
-          this.toastr.error('You must login to view matches'); 
+          this.toastr.error('You must login to view this page'); 
           return false;
       })
     );
