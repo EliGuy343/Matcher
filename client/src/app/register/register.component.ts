@@ -25,9 +25,20 @@ export class RegisterComponent implements OnInit {
       },
       error: error => {
         console.log(error);
-        this.toastr.error(error.error);
+        this.toastError(error.error);
       }
     })
+  }
+
+  toastError(error: any) {
+    if(typeof(error) === 'string') {
+      this.toastr.error(error);
+    }
+    else {
+      for(let item of Object.keys(error.errors)){
+        this.toastr.error(error.errors[item]);
+      }
+    }
   }
 
   cancel() {

@@ -25,10 +25,20 @@ export class NavComponent implements OnInit {
         this.router.navigateByUrl("/members");
       },
       error: error=> {
-        this.toastr.error(error.error);
-        console.log(error);
+        this.toastError(error.error);
       } 
     })
+  }
+
+  toastError(error: any) {
+    if(typeof(error) === 'string') {
+      this.toastr.error(error);
+    }
+    else {
+      for(let item of Object.keys(error.errors)){
+        this.toastr.error(error.errors[item]);
+      }
+    }
   }
 
   logout() {
