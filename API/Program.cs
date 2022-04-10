@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using static System.Net.Mime.MediaTypeNames;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
-
-
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddCors();
@@ -22,12 +22,20 @@ builder.Services.AddIdentityServices(builder.Configuration);
 // at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 builder.Services.AddApplicationServices(builder.Configuration);
 var app = builder.Build();
 
-
- 
+//Helper Method for Seeding users
+async void SeedUsers()
+{
+    using (var scope = app.Services.CreateScope())
+        {
+            var services = scope.ServiceProvider;
+            var context = services.GetRequiredService<DataContext>();
+            await context.Database.MigrateAsync();
+            await Seed.SeedUsers(context);
+        } 
+} 
 
 app.UseExceptionHandler(exceptionHandlerApp =>
 {
@@ -58,6 +66,8 @@ app.UseExceptionHandler(exceptionHandlerApp =>
         await context.Response.WriteAsync(json);
     });
 });
+
+SeedUsers();
 app.UseHsts();
 
 
