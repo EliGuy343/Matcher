@@ -61,3 +61,5 @@ E:\Personal Work\JS\Frameworks\Angular\practiceProjects\datingApp\api\bin\Debug\
 E:\Personal Work\JS\Frameworks\Angular\practiceProjects\datingApp\api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
 E:\Personal Work\JS\Frameworks\Angular\practiceProjects\datingApp\api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\Personal Work\JS\Frameworks\Angular\practiceProjects\datingApp\api\bin\Debug\net6.0\Data\UserSeedData.json
+E:\Personal Work\JS\Frameworks\Angular\practiceProjects\datingApp\api\bin\Debug\net6.0\AutoMapper.dll
+E:\Personal Work\JS\Frameworks\Angular\practiceProjects\datingApp\api\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

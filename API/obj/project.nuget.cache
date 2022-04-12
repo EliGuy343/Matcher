@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "nDypJCVD2rCif+iPIbuzW1+zWX/47czxfbssckq6WX2v3uCRv2Jw7ShDkVKYkE/O0BK5c8PxkjOW/oOuhufvlg==",
+  "dgSpecHash": "3uR6FGk500FObUfLEp9dtZK2WryZiatGKgRMgIqplfdAEKUNnlzN78fRKbyFcFO7Ri8fLczwxapSiB9r46FlMg==",
   "success": true,
   "projectFilePath": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\fkg\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
+    "C:\\Users\\fkg\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\fkg\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\fkg\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\fkg\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
@@ -19,7 +21,7 @@
     "C:\\Users\\fkg\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\2.2.0\\microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
     "C:\\Users\\fkg\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\fkg\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
-    "C:\\Users\\fkg\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\fkg\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\fkg\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.3\\microsoft.data.sqlite.core.6.0.3.nupkg.sha512",
     "C:\\Users\\fkg\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.3\\microsoft.entityframeworkcore.6.0.3.nupkg.sha512",
     "C:\\Users\\fkg\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.3\\microsoft.entityframeworkcore.abstractions.6.0.3.nupkg.sha512",
