@@ -1,0 +1,20 @@
+.img-thumbnail {
+    background-color: rgb(87, 83, 212);
+    height: 90%;
+    width:90%;
+    margin-left: 20px;
+    border: 5px;
+    border-color: black;
+}
+.card {
+    background-color: rgb(87, 83, 212);
+}
+.card-body {
+    padding: 0 35px;
+}
+
+.card-footer {
+    background-color: rgb(60, 55, 190);
+    padding: 10px 15px;
+    border-top: none;
+}
