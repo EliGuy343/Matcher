@@ -59,7 +59,7 @@ namespace API.Data.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("intrests")
+                    b.Property<string>("interests")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
