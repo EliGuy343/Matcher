@@ -63,5 +63,11 @@ E:\Personal Work\JS\Frameworks\Angular\practiceProjects\datingApp\api\bin\Debug\
 E:\Personal Work\JS\Frameworks\Angular\practiceProjects\datingApp\api\bin\Debug\net6.0\Data\UserSeedData.json
 E:\Personal Work\JS\Frameworks\Angular\practiceProjects\datingApp\api\bin\Debug\net6.0\AutoMapper.dll
 E:\Personal Work\JS\Frameworks\Angular\practiceProjects\datingApp\api\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+<<<<<<< HEAD
 E:\Personal Work\JS\Frameworks\Angular\practiceProjects\datingApp\api\bin\Debug\net6.0\CloudinaryDotNet.dll
 E:\Personal Work\JS\Frameworks\Angular\practiceProjects\datingApp\api\bin\Debug\net6.0\Newtonsoft.Json.dll
+=======
+C:\Users\EliGu\Documents\Personal Work\Projects\Angular\Matcher\datingApp\api\obj\Debug\net6.0\API.dll
+C:\Users\EliGu\Documents\Personal Work\Projects\Angular\Matcher\datingApp\api\obj\Debug\net6.0\refint\API.dll
+C:\Users\EliGu\Documents\Personal Work\Projects\Angular\Matcher\datingApp\api\obj\Debug\net6.0\API.pdb
+>>>>>>> e00f8e0024a3ecb0e16c14daaa6128b736a412cd
