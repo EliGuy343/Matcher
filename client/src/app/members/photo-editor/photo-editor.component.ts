@@ -3,8 +3,10 @@ import { FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
 import { Member } from 'src/app/models/member';
+import { Photo } from 'src/app/models/Photo';
 import { User } from 'src/app/models/user';
 import { AccountService } from 'src/app/services/account.service';
+import { MembersService } from 'src/app/services/members.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -20,7 +22,7 @@ export class PhotoEditorComponent implements OnInit {
   baseUrl = environment.apiUrl;
   user: User | null = null;  
   constructor(private accountService:AccountService,
-    private toastr:ToastrService) {
+    private toastr:ToastrService, private memberService: MembersService) {
       this.accountService.currentUser$.pipe(take(1)).subscribe(
         res => this.user = res)
     }
@@ -33,6 +35,25 @@ export class PhotoEditorComponent implements OnInit {
     this.hasBaseDropZoneOver = e;
   }
 
+  setMainPhoto(photo: Photo) {
+    this.memberService.setMainPhoto(photo.id).subscribe(()=>{
+      if(this.user == null) {
+        this.toastr.error("error: User is null");
+        return;
+      }
+      this.user.photoUrl = photo.url
+      this.accountService.setCurrentUser(this.user);
+      this.member!.photoUrl = photo.url;
+      this.member?.photos.forEach(p =>{
+        if(p.isMain) 
+          p.isMain = false;
+        
+        if(p.id == photo.id)
+          p.isMain = true;
+      })
+      }
+    );
+  }
 
   initializeUploader() {
     this.uploader = new FileUploader({
