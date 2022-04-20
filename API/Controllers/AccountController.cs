@@ -49,10 +49,11 @@ namespace API.Controllers
             };
         }
         
-        [HttpPost("login")]
+        [HttpPost("login-user")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto) 
         {
             var user = await _context.Users
+                .Include(p => p.Photos)
                 .SingleOrDefaultAsync(user=>user.UserName==loginDto.UserName.ToLower());
 
             if(user == null) 
@@ -66,11 +67,12 @@ namespace API.Controllers
                 if(computedHash[i] != user.PasswordHash[i])
                     return Unauthorized("Invalid Password");
             }
-
+            
             return new UserDto
             {
                 UserName = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Token = _tokenService.CreateToken(user),
+                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url
             };
 
             

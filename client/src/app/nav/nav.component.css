@@ -24,3 +24,9 @@
     border-color: #fff;
     background: linear-gradient(45deg,rgb(238, 238, 43),rgb(255, 255, 105));
 }   
+
+img {
+    max-height: 50px;
+    border: 2px solid #fff;
+    display:inline;
+}
