@@ -14,7 +14,9 @@ export class MembersService {
   constructor(private http: HttpClient) {}
 
   getMembers() {
-    if(this.members !== undefined && this.members!.length > 0)
+    // Total fucking халтура but it will work for now
+    // TODO: Figure out a better way to check when to update member state
+    if(this.members !== undefined && this.members!.length > 1)
       return of(this.members);
 
     return this.http.get<Member[]>(this.baseUrl + 'users').pipe(
@@ -34,7 +36,14 @@ export class MembersService {
     if(member !== undefined)
       return of(member);
 
-    return this.http.get<Member>(this.baseUrl+ 'users/' +userName);
+    return this.http.get<Member>(this.baseUrl+ 'users/' +userName).pipe(
+      map(member=>{
+        if(this.members === undefined) {
+          this.members = [member];
+        }
+          return member;
+      })
+    );
   }
 
   updateMember(member:Member) {
