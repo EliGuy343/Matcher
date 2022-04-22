@@ -7,21 +7,37 @@
         name="password"
         [formControl]="$any(ngControl.control)" 
         placeholder={{label}}>
-    <div 
-        *ngIf="ngControl.control?.errors!['required']"
-        class="invalid-feedback">
-            Please enter a {{label}}
-    </div>
-    <div
-        *ngIf="ngControl.control?.errors!['minlength']"
-        class="invalid-feedback">
-            {{label}} must be at least
-            {{ngControl.control?.errors!['minlength']['requiredLength']}}
-    </div>
-    <div
-        *ngIf="ngControl.control?.errors!['isMatching']"
-        class="invalid-feedback">
-            Passwords do not match
-    </div>
-    
+    <ng-container *ngIf="ngControl.control?.errors">
+        <div 
+            *ngIf="ngControl.control?.errors['required']"
+            class="invalid-feedback">
+                Please enter a {{label}}
+        </div>
+        <div
+            *ngIf="ngControl.control?.errors['minlength']"
+            class="invalid-feedback">
+                {{label}} must be at least
+                {{ngControl.control?.errors!['minlength']['requiredLength']}}
+        </div>
+        <div
+            *ngIf="ngControl.control?.errors['isMatching']"
+            class="invalid-feedback">
+                Passwords do not match
+        </div>
+        <div
+            *ngIf="ngControl.control?.errors['noLowercase']"
+            class="invalid-feedback">
+                Password has to have at least one lowercase letter
+        </div>
+        <div
+            *ngIf="ngControl.control?.errors['noUppercase']"
+            class="invalid-feedback">
+                Password has to have at least one uppercase letter
+        </div>
+        <div
+            *ngIf="ngControl.control?.errors['noNumber']"
+            class="invalid-feedback">
+                Password has to have at least one digit
+        </div>
+    </ng-container>
 </div>

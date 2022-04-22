@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, ControlContainer, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../services/account.service';
 
@@ -24,12 +24,45 @@ export class RegisterComponent implements OnInit {
   initilazeForm() {
     this.registerForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', [Validators.required,
-        Validators.minLength(8)]],
+      password: ['', [Validators.required,Validators.minLength(8),
+        this.matchLowercase(), this.matchUppercase(), this.matchNumber()]],
       confirmPassword: ['',[Validators.required, this.matchValues('password')]]
     });
   }
 
+  matchLowercase():ValidatorFn {
+    return (control: AbstractControl)=>{
+      const inp = control.value.toString();
+      for(let i = 0; i < inp.length; i++) {
+        if(inp[i].toLowerCase() == inp[i])
+          return null; 
+      }
+      return {noLowercase: true}
+    }
+  }
+
+  matchUppercase():ValidatorFn {
+    return (control: AbstractControl)=>{
+      const inp = control.value.toString();
+      for(let i = 0; i < inp.length; i++) {
+        if(inp[i].toUpperCase() == inp[i])
+          return null; 
+      }
+      return {noUppercase: true}
+    }
+  }
+  matchNumber():ValidatorFn {
+    return (control: AbstractControl)=>{
+      const inp = control.value.toString();
+      for(let i = 0; i < inp.length; i++) {
+        if(!isNaN(inp[i]))
+          return null; 
+      }
+      return {noNumber: true}
+    }
+  }
+
+  
   matchValues(matchTo: string): ValidatorFn {
     return (control:AbstractControl) =>{
         if(control.parent == null)
