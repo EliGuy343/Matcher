@@ -14,10 +14,11 @@ import { MembersService } from 'src/app/services/members.service';
 })
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm!: NgForm;
+  radioChanged: boolean = false;
   member: Member| null = null;
   user: User| null = null;
   @HostListener('window:beforeunload', ['$event']) unloadNotfication($event: any) {
-    if(this.editForm.dirty) {
+    if(this.editForm.dirty || this.radioChanged) {
       $event.returnValue = true; 
     }
   }
@@ -30,6 +31,11 @@ export class MemberEditComponent implements OnInit {
   
   ngOnInit(): void {
     this.loadMember();
+  }
+
+  radioChange() {
+    debugger;
+    this.radioChanged = true;
   }
 
   loadMember() {

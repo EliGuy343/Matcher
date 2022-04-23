@@ -34,13 +34,34 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-primary btn-block">Save Changes</button>
+                <button [disabled]="!editForm.dirty && !radioChanged"
+                    form="editForm" type="submit" class="btn btn-primary btn-block">
+                        Save Changes
+                </button>
             </div>
         </div>
     </div>
     <div class="col-8">
         <tabset class="member-tabset">
             <tab heading="about {{member.displayName}}">
+                <h5 class="text-center">My gender is:</h5>
+                <div class="form-group text-center">
+                    <label class="radio-inline">
+                        <input (click)="radioChange()" type="radio" value="male" [(ngModel)]="member.gender"> male
+                    </label>
+                    <label class="radio-inline mx-3">
+                        <input (click)="radioChange()" type="radio" value="female" [(ngModel)]="member.gender" > female
+                    </label>
+                    <label class="radio-inline mx-3">
+                        <input (click)="radioChange()" type="radio" value="non-binary" [(ngModel)]="member.gender" > non-binary
+                    </label>
+                    <label class="radio-inline mx-3">
+                        <input (click)="radioChange()" type="radio" value="agender" [(ngModel)]="member.gender" > agender
+                    </label>
+                    <label class="radio-inline">
+                        <input (click)="radioChange()" type="radio" value="genderfluid" [(ngModel)]="member.gender" > genderfluid
+                    </label>
+                </div>
                 <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
                     <h4>Description:</h4>
                     <textarea [(ngModel)] ="member.introduction"
