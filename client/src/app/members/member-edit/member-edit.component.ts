@@ -34,7 +34,6 @@ export class MemberEditComponent implements OnInit {
   }
 
   radioChange() {
-    debugger;
     this.radioChanged = true;
   }
 
@@ -51,7 +50,6 @@ export class MemberEditComponent implements OnInit {
     }
     this.memberService.updateMember(this.member).subscribe(() => {
       this.toastr.success('profile updated successfully');
-      console.log(this.member);
       this.editForm.reset(this.member);
       }  
     ) 
