@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Member } from '../models/member';
+import { PaginatedResult } from '../models/pagination';
 
 
 @Injectable({
@@ -11,19 +12,33 @@ import { Member } from '../models/member';
 export class MembersService {
   baseUrl = environment.apiUrl;
   members!: Member[];
+  paginatedResult: PaginatedResult<Member[]> = new PaginatedResult<Member[]>();
   constructor(private http: HttpClient) {}
 
-  getMembers() {
+  getMembers(page?: number, itemsPerPage?: number) {
     // Total fucking халтура but it will work for now
     // TODO: Figure out a better way to check when to update member state
-    if(this.members !== undefined && this.members!.length > 1)
-      return of(this.members);
+    
+    // if(this.members !== undefined && this.members!.length > 1)
+    //   return of(this.members);
 
-    return this.http.get<Member[]>(this.baseUrl + 'users').pipe(
-      map(members=> {
-        this.members = members;
-        return this.members;
-      })
+    let params = new HttpParams();
+    if(page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page.toString());
+      params = params.append('pageSize', itemsPerPage.toString());
+    }
+    return this.http.get<Member[]>(this.baseUrl + 'users',{ observe:'response', params}).pipe(
+      
+      map(response=> {
+          if(response.body){
+            this.paginatedResult.result = response.body;
+            if(response.headers.get('pagination') != null) {
+              this.paginatedResult.pagination = JSON.parse(response.headers.get('Pagination')!);
+
+            }
+          }
+          return this.paginatedResult;
+        })
     );
   }
 

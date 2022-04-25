@@ -8,7 +8,9 @@ using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using LinqKit;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace API.Data
 {
@@ -29,13 +31,26 @@ namespace API.Data
                 .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
                 .SingleOrDefaultAsync();
         }
-
         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
-            var query = _context.Users
-                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-                .AsNoTracking();
-            return await PagedList<MemberDto>.CreateAsync(query, userParams.PageNumber, userParams.PageSize);
+            var query = _context.Users.AsQueryable();
+            query = query.Where(u => u.UserName != userParams.CurrentUsername);
+            if(!userParams.Gender.IsNullOrEmpty())
+            {
+                var predicate = PredicateBuilder.New<AppUser>(false);
+                var genders = userParams.Gender.Split(';');
+                foreach (string gender in genders)
+                    predicate = predicate.Or(u => u.Gender == gender);
+                query = query.Where(predicate);
+
+
+            }
+            return await PagedList<MemberDto>.
+                CreateAsync(
+                    query.ProjectTo<MemberDto>(_mapper.ConfigurationProvider).AsNoTracking(),
+                    userParams.PageNumber, 
+                    userParams.PageSize
+                );
                 
         }
 
