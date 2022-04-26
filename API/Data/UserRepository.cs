@@ -43,8 +43,10 @@ namespace API.Data
                     predicate = predicate.Or(u => u.Gender == gender);
                 query = query.Where(predicate);
 
-
             }
+            var startDob = DateTime.Today.AddYears(-userParams.maxAge -1);
+            var endDob = DateTime.Today.AddYears(-userParams.MinAge);
+            query = query.Where(u => u.DateOfBirth >= startDob && u.DateOfBirth <= endDob);
             return await PagedList<MemberDto>.
                 CreateAsync(
                     query.ProjectTo<MemberDto>(_mapper.ConfigurationProvider).AsNoTracking(),
