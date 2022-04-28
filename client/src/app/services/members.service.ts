@@ -4,6 +4,7 @@ import { map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Member } from '../models/member';
 import { PaginatedResult } from '../models/pagination';
+import { UserParams } from '../models/userParams';
 
 
 @Injectable({
@@ -12,34 +13,45 @@ import { PaginatedResult } from '../models/pagination';
 export class MembersService {
   baseUrl = environment.apiUrl;
   members!: Member[];
-  paginatedResult: PaginatedResult<Member[]> = new PaginatedResult<Member[]>();
   constructor(private http: HttpClient) {}
 
-  getMembers(page?: number, itemsPerPage?: number) {
+  getMembers(userParams: UserParams) {
     // Total fucking халтура but it will work for now
     // TODO: Figure out a better way to check when to update member state
     
     // if(this.members !== undefined && this.members!.length > 1)
     //   return of(this.members);
-
-    let params = new HttpParams();
-    if(page != null && itemsPerPage != null) {
-      params = params.append('pageNumber', page.toString());
-      params = params.append('pageSize', itemsPerPage.toString());
+    let params = this.getPaginationHeaders(userParams.pageNumber, userParams.pageSize);
+    params = params.append('minAge', userParams.minAge.toString());
+    params = params.append('maxAge', userParams.maxAge.toString());
+    let gendersToPick = '';
+    for(let key of Object.keys(userParams.gender)) {
+      gendersToPick = gendersToPick +`;${userParams.gender[key]}`;
     }
-    return this.http.get<Member[]>(this.baseUrl + 'users',{ observe:'response', params}).pipe(
-      
-      map(response=> {
-          if(response.body){
-            this.paginatedResult.result = response.body;
-            if(response.headers.get('pagination') != null) {
-              this.paginatedResult.pagination = JSON.parse(response.headers.get('Pagination')!);
+    params = params.append('gender', gendersToPick);
+    return this.getPaginatedResult<Member[]>(this.baseUrl +'users',params);
+  }
 
-            }
+  private getPaginatedResult<T>(url:string,params: HttpParams) {
+    const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
+    return this.http.get<T>(url, { observe: 'response', params }).pipe(
+      map(response => {
+        if (response.body) {
+          paginatedResult.result = response.body;
+          if (response.headers.get('pagination') != null) {
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination')!);
           }
-          return this.paginatedResult;
-        })
+        }
+        return paginatedResult;
+      })
     );
+  }
+
+  private getPaginationHeaders(pageNumber: number, pageSize: number) {
+    let params = new HttpParams();
+    params = params.append('pageNumber', pageNumber.toString());
+    params = params.append('pageSize', pageSize.toString());
+    return params;
   }
 
   getMember(userName:String | null) {

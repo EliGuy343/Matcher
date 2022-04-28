@@ -1,8 +1,38 @@
+<div class="text-center mt-3">
+    <h2>Your matches - {{pagination?.totalItems}} found</h2>
+</div>
+<div class="container mt-3">
+    <form #form="ngForm" class="mb-3"(ngSubmit)="loadMembers()" 
+        autocomplete="off">                       
+        <div class="form-group">
+            <label class="mr-3">Genders:</label>
+            <div *ngFor="let gender of genderList" class="form-group text-center d-inline-flex">
+              <label class="mx-3">
+                <input type="checkbox" [value]="gender.value" [(ngModel)]="gender.isSelected" 
+                    [ngModelOptions]="{standalone: true}" (change)="onCheckChange($event)"/>
+                {{gender.display}}
+              </label>
+        </div>
+
+        </div>
+            <div class="form-group d-inline-flex mt-3">
+                <label>Age from:</label>
+                <input type="number" class="form-control mx-3"
+                    style="width: 70px; height: 25px;" name="minAge" [(ngModel)]="userParams!.minAge">
+                <label>Age to:</label>
+                <input type="number" class="form-control mx-3"
+                    style="width: 70px; height: 25px;" name="maxAge" [(ngModel)]="userParams!.maxAge">
+            </div>
+            <button class="btn btn-primary mx-2" type="submit">Apply Filters</button>
+            <button (click)="resetFilters()" class="btn btn-primary mx-2" type="submit">Reset Filters</button>
+    </form>
+</div>
 <div class="row">
     <div *ngFor="let member of members" class="col-2">
         <app-member-card [member]="member"></app-member-card>
     </div>
 </div>
+
 
 <div class="d-flex justify-content-center" *ngIf="pagination">
     <pagination
