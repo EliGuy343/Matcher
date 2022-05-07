@@ -13,6 +13,7 @@ import { UserParams } from '../models/userParams';
 export class MembersService {
   baseUrl = environment.apiUrl;
   members!: Member[];
+  memberCache = new Map();
   constructor(private http: HttpClient) {}
 
   getMembers(userParams: UserParams) {
@@ -21,6 +22,13 @@ export class MembersService {
     
     // if(this.members !== undefined && this.members!.length > 1)
     //   return of(this.members);
+
+    let key = JSON.stringify(userParams)
+    let response =this.memberCache.get(key);
+    debugger;
+    if (response) {
+      return of(response);
+    }
     let params = this.getPaginationHeaders(userParams.pageNumber, userParams.pageSize);
     params = params.append('minAge', userParams.minAge.toString());
     params = params.append('maxAge', userParams.maxAge.toString());
@@ -30,7 +38,12 @@ export class MembersService {
     }
     params = params.append('gender', gendersToPick);
     params = params.append('orderBy', userParams.orderBy);
-    return this.getPaginatedResult<Member[]>(this.baseUrl +'users',params);
+    return this.getPaginatedResult<Member[]>(this.baseUrl +'users',params).pipe(
+      map(response =>{
+        this.memberCache.set(key, response);
+        return response;
+      })
+    );
   }
 
   private getPaginatedResult<T>(url:string,params: HttpParams) {
