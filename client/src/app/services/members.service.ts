@@ -29,6 +29,7 @@ export class MembersService {
       gendersToPick = gendersToPick +`;${userParams.gender[key]}`;
     }
     params = params.append('gender', gendersToPick);
+    params = params.append('orderBy', userParams.orderBy);
     return this.getPaginatedResult<Member[]>(this.baseUrl +'users',params);
   }
 
