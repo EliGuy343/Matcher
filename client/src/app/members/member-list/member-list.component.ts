@@ -21,7 +21,7 @@ export class MemberListComponent implements OnInit {
   genderList = [
     {value:'male', display:'Male', isSelected: false},
     {value:'female', display:'Female', isSelected: false},
-    {value:'nonbinary', display:'Non-Binary', isSelected: false},
+    {value:'non-binary', display:'Non-Binary', isSelected: false},
     {value:'agender', display:'Agender', isSelected: false},
     {value:'genderfluid', display:'Gender-Fluid', isSelected: false}
   ];

@@ -17,16 +17,11 @@ export class MembersService {
   constructor(private http: HttpClient) {}
 
   getMembers(userParams: UserParams) {
-    // Total fucking халтура but it will work for now
-    // TODO: Figure out a better way to check when to update member state
-    
-    // if(this.members !== undefined && this.members!.length > 1)
-    //   return of(this.members);
-
     let key = JSON.stringify(userParams)
     let response =this.memberCache.get(key);
     debugger;
     if (response) {
+      console.log(response);
       return of(response);
     }
     let params = this.getPaginationHeaders(userParams.pageNumber, userParams.pageSize);
@@ -69,14 +64,13 @@ export class MembersService {
   }
 
   getMember(userName:String | null) {
-    if(userName == null){
-      return;
-    }
+    const member = [...this.memberCache.values()]
+      .reduce((arr, elem) => arr.concat(elem.result), [])
+      .find((member: Member)=> member.userName === userName);
 
-    const member = this.members?.find(x => x.userName === userName);
-    if(member !== undefined)
+    if(member) 
       return of(member);
-
+    
     return this.http.get<Member>(this.baseUrl+ 'users/' +userName).pipe(
       map(member=>{
         if(this.members === undefined) {

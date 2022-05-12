@@ -3420,19 +3420,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fkg\\.nuget\\packages\\": {}
+    "C:\\Users\\EliGu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj",
+      "projectUniqueName": "C:\\Users\\EliGu\\Documents\\Personal Work\\Projects\\Angular\\Matcher\\datingApp\\api\\API.csproj",
       "projectName": "API",
-      "projectPath": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\API.csproj",
-      "packagesPath": "C:\\Users\\fkg\\.nuget\\packages\\",
-      "outputPath": "E:\\Personal Work\\JS\\Frameworks\\Angular\\practiceProjects\\datingApp\\api\\obj\\",
+      "projectPath": "C:\\Users\\EliGu\\Documents\\Personal Work\\Projects\\Angular\\Matcher\\datingApp\\api\\API.csproj",
+      "packagesPath": "C:\\Users\\EliGu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\EliGu\\Documents\\Personal Work\\Projects\\Angular\\Matcher\\datingApp\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\fkg\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\EliGu\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -3513,7 +3513,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
