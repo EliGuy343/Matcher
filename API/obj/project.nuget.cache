@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "18AFOS0pcn11uWHo2H4O0NtyTEE/z8GiL3bPUhj0dcyTLUbKDlyTteVhHiyPFCeAOHFVOxPqHZz2U1RUsVYQjg==",
+  "dgSpecHash": "tiB7MK0sNVg6nRe90QHCVatNWd2nUH32qTBLI1zGjF8toZxFycSUGQIXnoHQ66r8n3rPiwQjDYfwX/ByIbZazg==",
   "success": true,
   "projectFilePath": "C:\\Users\\EliGu\\Documents\\Personal Work\\Projects\\Angular\\Matcher\\datingApp\\api\\API.csproj",
   "expectedPackageFiles": [
@@ -28,9 +28,9 @@
     "C:\\Users\\EliGu\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "C:\\Users\\EliGu\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\EliGu\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.3\\microsoft.data.sqlite.core.6.0.3.nupkg.sha512",
-    "C:\\Users\\EliGu\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.3\\microsoft.entityframeworkcore.6.0.3.nupkg.sha512",
-    "C:\\Users\\EliGu\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.3\\microsoft.entityframeworkcore.abstractions.6.0.3.nupkg.sha512",
-    "C:\\Users\\EliGu\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.3\\microsoft.entityframeworkcore.analyzers.6.0.3.nupkg.sha512",
+    "C:\\Users\\EliGu\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.5\\microsoft.entityframeworkcore.6.0.5.nupkg.sha512",
+    "C:\\Users\\EliGu\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.5\\microsoft.entityframeworkcore.abstractions.6.0.5.nupkg.sha512",
+    "C:\\Users\\EliGu\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.5\\microsoft.entityframeworkcore.analyzers.6.0.5.nupkg.sha512",
     "C:\\Users\\EliGu\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.3\\microsoft.entityframeworkcore.design.6.0.3.nupkg.sha512",
     "C:\\Users\\EliGu\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.3\\microsoft.entityframeworkcore.relational.6.0.3.nupkg.sha512",
     "C:\\Users\\EliGu\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\6.0.3\\microsoft.entityframeworkcore.sqlite.6.0.3.nupkg.sha512",
