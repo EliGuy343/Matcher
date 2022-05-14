@@ -13,6 +13,7 @@ export class MemberDetailComponent implements OnInit {
   member:Member| null = null;
   galleryOptions: NgxGalleryOptions[] | undefined;
   galleryImages: NgxGalleryImage[] | undefined;
+  liked!: boolean;
   constructor(private memberService:MembersService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -49,6 +50,21 @@ export class MemberDetailComponent implements OnInit {
       .get('username'))?.subscribe(member => {
         this.member = member;
         this.galleryImages = this.getImages();
-      })
+        this.getLiked(); 
+      });
+  }
+
+  getLiked() {
+    if(this.member)
+      this.memberService.getUserLiked(this.member.userName).subscribe(
+        res => this.liked = res ? true : false
+      );
+  }
+  
+  toggleLike() {
+    if(this.member)
+      this.memberService.toggleLike(this.member.userName).subscribe(
+        () => this.liked = !this.liked
+      );
   }
 }

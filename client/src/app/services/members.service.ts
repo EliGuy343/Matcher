@@ -97,4 +97,16 @@ export class MembersService {
   deletePhoto(PhotoId: number) {
     return this.http.delete(this.baseUrl + 'users/delete-photo/' +PhotoId); 
   }
+
+  toggleLike(userName: string) {
+    return this.http.post(this.baseUrl + 'likes/' + userName, {});
+  }
+
+  getLikes(predicate: string) {
+    return this.http.get(this.baseUrl + 'likes?=' +predicate);
+  }
+
+  getUserLiked(userName: string) {
+    return this.http.get(this.baseUrl + 'likes/' + userName);
+  }
 }

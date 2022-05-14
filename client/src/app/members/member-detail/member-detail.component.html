@@ -26,7 +26,14 @@
             </div>
             <div class="card-footer">
                 <div class="btn-group d-flex">
-                    <button class="btn btn-primary mx-2">Like</button>
+                    <ng-container *ngIf="!this.liked">
+                        <button (click)="this.toggleLike()"
+                            class="btn btn-primary mx-2">Like</button>
+                    </ng-container>
+                    <ng-container *ngIf="this.liked">
+                        <button (click)="this.toggleLike()"
+                            class="btn btn-primary mx-2">Unlike</button>
+                    </ng-container>
                     <button class="btn btn-primary mx-2">Message</button>
                 </div>
             </div>

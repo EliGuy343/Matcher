@@ -62,5 +62,15 @@ namespace API.Controllers
             var users = await _likesRepositroy.GetUsersLikes(predicate, User.GetUserId());
             return Ok(users);
         }
+
+        [HttpGet("{username}")]
+        public async Task<ActionResult> getLikedUser(string username) {
+            var sourceUserId = User.GetUserId();
+            var likedUser = await _userRepository.GetUserByUsernameAsync(username);
+            var userLike = await _likesRepositroy.GetUserLike(sourceUserId, likedUser.Id);
+            if(userLike == null)
+                return Ok(false);
+            return Ok(true);
+        }
     }
 }
