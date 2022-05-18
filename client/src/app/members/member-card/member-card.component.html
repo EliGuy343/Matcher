@@ -11,11 +11,8 @@
                     <i class="fa fa-user">
                     </i>
                 </button>
-                <!-- <button (click)="toggleLike(member)"  class="btn-primary">
-                    <i class="fa fa-heart">
-                    </i>
-                </button> -->
-                <button class="btn-primary">
+                <button routerLink="/members/{{member.userName}}"
+                    [queryParams]="{tab: 3}" class="btn-primary">
                     <i class="fa fa-envelope">
                     </i>
                 </button>

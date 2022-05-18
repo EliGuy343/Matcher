@@ -1,13 +1,13 @@
 .img-thumbnail {
     margin: 25px;
     width: 85%;
-    height: 85%;
+    height: 40%;
     background-color: rgb(87, 83, 212);
 }
 .card {
     background-color: rgb(87, 83, 212);
     width: 90%;
-    height: 95%;
+    height: 700px;
 }
 .card-body {
     padding: 0 35px;

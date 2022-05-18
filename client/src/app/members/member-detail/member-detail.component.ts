@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
+import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
 import { Member } from 'src/app/models/member';
+import { Message } from 'src/app/models/message';
 import { MembersService } from 'src/app/services/members.service';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -10,14 +13,26 @@ import { MembersService } from 'src/app/services/members.service';
   styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
+  @ViewChild('tabs') memberTabs!: TabsetComponent;
   member:Member| null = null;
   galleryOptions: NgxGalleryOptions[] | undefined;
   galleryImages: NgxGalleryImage[] | undefined;
   liked!: boolean;
-  constructor(private memberService:MembersService, private route: ActivatedRoute) { }
+  activeTab!: TabDirective;
+  messages: Message[] = [];
+  constructor(private memberService:MembersService,
+      private route: ActivatedRoute, private messageService: MessageService){}
 
   ngOnInit(): void {
-    this.loadMember();
+    this.route.data.subscribe(data => {
+      this.member = data['member'];
+    })
+    this.route.queryParams.subscribe(
+      params => {
+        params['tab'] ? this.selectTab(params['tab']) : this.selectTab(0);
+        this.getLiked();
+      }
+    )
     this.galleryOptions = [
       {
         width:'500px',
@@ -28,6 +43,7 @@ export class MemberDetailComponent implements OnInit {
         preview: false
       }
     ]
+    this.galleryImages = this.getImages();
   }
 
   getImages(): NgxGalleryImage[] | undefined {
@@ -45,15 +61,6 @@ export class MemberDetailComponent implements OnInit {
     return imageUrls;
   }
 
-  loadMember() {
-    this.memberService.getMember(this.route.snapshot.paramMap
-      .get('username'))?.subscribe(member => {
-        this.member = member;
-        this.galleryImages = this.getImages();
-        this.getLiked(); 
-      });
-  }
-
   getLiked() {
     if(this.member)
       this.memberService.getUserLiked(this.member.userName).subscribe(
@@ -64,7 +71,33 @@ export class MemberDetailComponent implements OnInit {
   toggleLike() {
     if(this.member)
       this.memberService.toggleLike(this.member.userName).subscribe(
-        () => this.liked = !this.liked
+        (res) =>{
+          console.log(res);
+          this.liked = !this.liked
+        }
       );
+  }
+
+  loadMessages() {
+    if(this.member && this.member.userName)
+      this.messageService.getMessageThread(this.member.userName).subscribe(
+        messages => {
+          console.log(messages);
+          this.messages = messages;
+
+        }
+      )
+    }
+
+  selectTab(tabId : number) {
+    if(this.memberTabs)
+      this.memberTabs.tabs[tabId].active = true;
+  }
+
+  onTabActivated(data: TabDirective) {
+    this.activeTab = data;
+    if (this.activeTab.heading === 'Messages' && this.messages.length === 0) {
+      this.loadMessages();
+    }
   }
 }
