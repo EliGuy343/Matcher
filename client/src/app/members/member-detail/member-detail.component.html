@@ -34,18 +34,21 @@
                         <button (click)="this.toggleLike()"
                             class="btn btn-primary mx-2">Unlike</button>
                     </ng-container>
-                    <button (click)="selectTab(3)" class="btn btn-primary mx-2">Message</button>
+                    <button (click)="selectTab(3)" class="btn btn-primary mx-2">
+                        Message
+                    </button>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-8">
         <tabset class="member-tabset" #tabs>
-            <tab heading="about {{member.displayName}}" (selectTab)="onTabActivated($event)">
-                <h4>Description:</h4>
-                <p>{{member.introduction}}</p>
-                <h3>Looking For:</h3>
-                <p>{{member.lookingFor}}</p>
+            <tab heading="about {{member.displayName}}" 
+                (selectTab)="onTabActivated($event)">
+                    <h4>Description:</h4>
+                    <p>{{member.introduction}}</p>
+                    <h3>Looking For:</h3>
+                    <p>{{member.lookingFor}}</p>
             </tab>
             <tab heading="Interests" (selectTab)="onTabActivated($event)">
                 <h4>Interests:</h4>
@@ -61,7 +64,9 @@
                 </ngx-gallery>
             </tab>
             <tab heading="Messages" (selectTab)="onTabActivated($event)">
-                <app-member-messages [messages]="messages"></app-member-messages>
+                <app-member-messages [username]="member.userName"
+                    [messages]="messages">
+                </app-member-messages>
             </tab>
         </tabset>
     </div>
