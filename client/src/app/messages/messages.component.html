@@ -32,32 +32,31 @@
             *ngFor="let message of messages" routerLink='{{
             container === "outbox"
             ? "/members/" + message.recipientUsername
-            : "/members/" + message.senderUsername}}' [queryParams]="{tab:3}"
-        >
+            : "/members/" + message.senderUsername}}' [queryParams]="{tab:3}">
             <td>{{message.content}}</td>
-            <td>
-                <div *ngIf="container !== 'outbox' && container !== 'inbox' ">
-                    <img src="{{message.senderPhotoUrl || './assets/user.png'}}"
-                        alt="{{message.senderUsername}}"
-                        style="width: 50px; margin:5px;"
-                        class="img-circle rounded-circle mr-2">
-                    <strong>{{message.recipientUsername | titlecase}}</strong>                    
-                </div>
-                <div *ngIf="container === 'inbox'">
-                    <img src="{{message.senderPhotoUrl || './assets/user.png'}}"
-                        alt="{{message.senderUsername}}"
-                        style="width: 50px; margin:5px;"
-                        class="img-circle rounded-circle mr-2">
-                    <strong>{{message.senderUsername | titlecase}}</strong>                    
-                </div>
-                <div *ngIf="container === 'outbox'">
-                    <img src="{{message.recipientPhotoUrl || './assets/user.png'}}"
-                        alt="{{message.recipientUsername}}"
-                        style="width: 50px; margin:5px;"
-                        class="img-circle rounded-circle mr-2">
-                    <strong>{{message.recipientUsername | titlecase}}</strong>                    
-                </div>
-            </td>
+                <td>
+                    <div *ngIf="container !=='outbox' && container !=='inbox'">
+                        <img src="{{message.senderPhotoUrl || './assets/user.png'}}"
+                            alt="{{message.senderUsername}}"
+                            style="width: 50px; margin:5px;"
+                            class="img-circle rounded-circle mr-2">
+                        <strong>{{message.recipientUsername | titlecase}}</strong>                    
+                    </div>
+                    <div *ngIf="container === 'inbox'">
+                        <img src="{{message.senderPhotoUrl || './assets/user.png'}}"
+                            alt="{{message.senderUsername}}"
+                            style="width: 50px; margin:5px;"
+                            class="img-circle rounded-circle mr-2">
+                        <strong>{{message.senderUsername | titlecase}}</strong>                    
+                    </div>
+                    <div *ngIf="container === 'outbox'">
+                        <img src="{{message.recipientPhotoUrl || './assets/user.png'}}"
+                            alt="{{message.recipientUsername}}"
+                            style="width: 50px; margin:5px;"
+                            class="img-circle rounded-circle mr-2">
+                        <strong>{{message.recipientUsername | titlecase}}</strong>                    
+                    </div>
+                </td>
             <td>{{message.messageSent}}</td>
             <td>
                 <button (click)="$event.stopPropagation()"

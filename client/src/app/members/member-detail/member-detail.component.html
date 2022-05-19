@@ -65,7 +65,7 @@
             </tab>
             <tab heading="Messages" (selectTab)="onTabActivated($event)">
                 <app-member-messages [username]="member.userName"
-                    [messages]="messages">
+                    [messages]="messages" [liked]="liked">
                 </app-member-messages>
             </tab>
         </tabset>

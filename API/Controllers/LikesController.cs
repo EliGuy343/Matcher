@@ -36,7 +36,8 @@ namespace API.Controllers
             if(sourceUser.UserName == username)
                 return BadRequest("You cannot like yourself");
             
-            var userLike = await _likesRepositroy.GetUserLike(sourceUserId, likedUser.Id);
+            var userLike = await _likesRepositroy.GetUserLike(sourceUserId,
+                likedUser.Id);
 
             if(userLike != null)
             {

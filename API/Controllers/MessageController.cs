@@ -18,13 +18,18 @@ namespace API.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IMessageRepository _messageRepository;
+        private readonly ILikesRepository _likesRepository;
         private readonly IMapper _mapper;
-        public MessageController (IUserRepository userRepository,
-            IMessageRepository messageRepository, IMapper mapper) 
+        public MessageController (
+            IUserRepository userRepository,
+            IMessageRepository messageRepository,
+            ILikesRepository likesRepository,
+            IMapper mapper) 
         {
             _mapper = mapper;
             _messageRepository = messageRepository;
             _userRepository = userRepository;
+            _likesRepository = likesRepository;
         }
         [HttpPost]
         public async Task<ActionResult<MessageDto>> CreateMessage(
@@ -37,9 +42,15 @@ namespace API.Controllers
             var sender = await _userRepository.GetUserByUsernameAsync(username);
             var recipient = await _userRepository.GetUserByUsernameAsync(
                 createMessageDto.RecipientUsername);
-
             if(recipient == null)
                 return NotFound();
+
+            var userLike = await _likesRepository.GetUserLike(
+                recipient.Id, sender.Id);
+
+            if(userLike == null)
+                return BadRequest("You can only message"+
+                    " users that have liked you");
 
             var message = new Message
             {
