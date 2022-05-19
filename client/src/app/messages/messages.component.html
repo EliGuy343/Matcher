@@ -31,7 +31,7 @@
             [hidden]="loading"
             *ngFor="let message of messages" routerLink='{{
             container === "outbox"
-            ? "/members/" + messages.recipientUsername
+            ? "/members/" + message.recipientUsername
             : "/members/" + message.senderUsername}}' [queryParams]="{tab:3}"
         >
             <td>{{message.content}}</td>
@@ -60,7 +60,10 @@
             </td>
             <td>{{message.messageSent}}</td>
             <td>
-                <button class="btn btn-danger">Delete</button>
+                <button (click)="$event.stopPropagation()"
+                    (click)="deleteMessage(message)" class="btn btn-danger">
+                        Delete
+                </button>
             </td>
         </tr>
     </table>
