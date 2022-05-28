@@ -1,12 +1,14 @@
 using System.Text;
 using System.Text.Json;
 using API.Data;
+using API.Entities;
 using API.Errors;
 using API.Extensions;
 using API.Interfaces;
 using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using static System.Net.Mime.MediaTypeNames;
@@ -32,8 +34,12 @@ async void SeedUsers()
         {
             var services = scope.ServiceProvider;
             var context = services.GetRequiredService<DataContext>();
+            var roleManager = services
+                .GetRequiredService<RoleManager<AppRole>>();
+            var userManager = services
+                .GetRequiredService<UserManager<AppUser>>();
             await context.Database.MigrateAsync();
-            await Seed.SeedUsers(context);
+            await Seed.SeedUsers(userManager, roleManager);
         } 
 } 
 
