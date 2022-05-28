@@ -1,4 +1,4 @@
-<div *ngIf="liked" class="card">
+<div *ngIf="liked && likedBy" class="card">
     <div class="card-body">
         <div *ngIf="messages?.length === 0">
             No messages yet... say hi by using the message box below
@@ -61,9 +61,14 @@
     </div>
 </div>
 
-<div *ngIf="!liked">
+<div *ngIf="!likedBy">
     <h5 class="text-center">
         This user hasn't liked you yet, and hence you can't send messages
         to them. Like them, and perhaps they will like you back. 
+    </h5>
+</div>
+<div *ngIf="likedBy && !liked">
+    <h5 class="text-center">
+       This user has liked you, like them back so you can start messaging them
     </h5>
 </div>

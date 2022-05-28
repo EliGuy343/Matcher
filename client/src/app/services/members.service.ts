@@ -94,4 +94,7 @@ export class MembersService {
   getUserLiked(userName: string) {
     return this.http.get(this.baseUrl + 'likes/' + userName);
   }
+  getUserLikedBy(userName: string) {
+    return this.http.get(this.baseUrl + 'likes/likedby/' + userName);
+  }
 }

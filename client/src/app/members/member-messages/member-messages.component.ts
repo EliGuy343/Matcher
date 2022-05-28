@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Message } from 'src/app/models/message';
+import { MembersService } from 'src/app/services/members.service';
 import { MessageService } from 'src/app/services/message.service';
 
 @Component({
@@ -13,11 +14,21 @@ export class MemberMessagesComponent implements OnInit {
   @Input() messages !:Message[];
   @Input() username !:string;
   @Input() liked !: boolean;
+  likedBy !:boolean;
   messageContent!: string;
-  constructor(private messageSerivce: MessageService) {}
+  constructor(private messageSerivce: MessageService, 
+    private memberService: MembersService) {}
 
   ngOnInit(): void {
+    this.getLikedBy();
+  }
 
+  getLikedBy() {
+    this.memberService.getUserLikedBy(this.username).subscribe(
+      (res) => {
+        this.likedBy = res ? true : false;
+      }
+    );
   }
 
   sendMessage() {

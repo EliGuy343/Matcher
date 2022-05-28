@@ -62,6 +62,7 @@ export class MemberDetailComponent implements OnInit {
   }
 
   getLiked() {
+    debugger;
     if(this.member)
       this.memberService.getUserLiked(this.member.userName).subscribe(
         res => this.liked = res ? true : false

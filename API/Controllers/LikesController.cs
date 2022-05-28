@@ -77,5 +77,14 @@ namespace API.Controllers
                 return Ok(false);
             return Ok(true);
         }
+        [HttpGet("likedby/{username}")]
+        public async Task<ActionResult> getLikedByUser(string username) {
+            var sourceUserId = User.GetUserId();
+            var likedUser = await _userRepository.GetUserByUsernameAsync(username);
+            var userLike = await _likesRepositroy.GetUserLike(likedUser.Id, sourceUserId);
+            if(userLike == null)
+                return Ok(false);
+            return Ok(true);
+        }
     }
 }
