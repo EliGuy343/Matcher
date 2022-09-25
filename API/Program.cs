@@ -6,6 +6,7 @@ using API.Errors;
 using API.Extensions;
 using API.Interfaces;
 using API.Services;
+using API.signalR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Identity;
@@ -25,6 +26,7 @@ builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddSignalR();
 var app = builder.Build();
 
 //Helper Method for Seeding users
@@ -82,8 +84,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors(policy => policy.AllowAnyHeader()
-    .AllowAnyMethod().WithOrigins("http://localhost:4200"));
+app.UseCors(policy => 
+    policy
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials()
+        .WithOrigins("http://localhost:4200"));
 
 app.UseHttpsRedirection();
 
@@ -91,5 +97,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapHub<PressenceHub>("");
 app.Run();

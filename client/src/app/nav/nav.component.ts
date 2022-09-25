@@ -32,6 +32,7 @@ export class NavComponent implements OnInit {
 
   toastError(error: any) {
     if(typeof(error) === 'string') {
+      console.log(error);
       this.toastr.error(error);
     }
     else {
